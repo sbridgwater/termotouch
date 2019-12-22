@@ -26,15 +26,7 @@ exports.handler = (event, context, callback) => {
   }
   /* construct the fauna query */
   
-  
-  client.query(
-  q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331'))
-)
-.then((ret) => console.log(ret))
-  
-  
-  
-  return client.query(q.Get(q.Ref(q.Collection"termotouch"), '252467483202552331'))
+  return client.query(q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331')))
   .then((response) => {
     console.log("success", response)
     /* Success! return the response with statusCode 200 */
