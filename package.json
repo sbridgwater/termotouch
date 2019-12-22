@@ -2,8 +2,11 @@
   "name": "idp",
   "version": "1.0.0",
   "dependencies": {
-    "faunadb": "^2.10.2",
-  }
+    "faunadb": "^2.10.2"
+  },
+  "devDependencies": {
+    "faunadb": "^2.10.2"
+  },
   "description": "netlify function with backend faunadb to serve as IdP",
   "main": "index.js",
   "scripts": {
