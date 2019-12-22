@@ -1,7 +1,5 @@
-/* code from functions/todos-create.js */
-import faunadb from 'faunadb' /* Import faunaDB sdk */
-
 /* configure faunaDB Client with our secret */
+const faunadb = require('faunadb');
 const q = faunadb.query
 const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
