@@ -1,5 +1,5 @@
 /* configure faunaDB Client with our secret */
-const faunadb = require('./faunadb');
+const faunadb = require('node_modules/faunadb');
 const q = faunadb.query
 const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
