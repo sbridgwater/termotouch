@@ -5,14 +5,8 @@
     "faunadb": "^2.10.2"
   },
   "scripts": {
-    "docs": "node generate-readme.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently 'yarn start:client' 'yarn start:server'",
-    "start:client": "webpack-dev-server --mode development --hot --config webpack.client.js",
-    "start:server": "netlify-lambda serve src/lambda -c webpack.server.js",
-    "build": "yarn build:client && yarn build:server",
-    "build:client": "webpack --mode production --config webpack.client.js",
-    "build:server": "netlify-lambda build src/lambda"
+    "prebuild" : "cd functions && npm i",
+    "build": "faunadb build"
   },
   "devDependencies": {
     "faunadb": "^2.10.2"
