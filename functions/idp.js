@@ -28,9 +28,16 @@ exports.handler = (event, context, callback) => {
   .then((response) => {
     console.log("success", response)
     /* Success! return the response with statusCode 200 */
+    if (response.data.password == "simon321")
+    {
+    jsondata=response.data
+    }
+    else {
+    jsondata="Password Incorrect"
+    }
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify(response.data)
+      body: JSON.stringify(jsondata)
     })
   }).catch((error) => {
     console.log("error", error)
