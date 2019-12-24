@@ -53,4 +53,11 @@ exports.handler = (event, context, callback) => {
     })
   })
   } /* end httpmethod POST section */
+  else /* NOT Allowed */
+  {
+   return callback(null, {
+      statusCode: 200,
+      body: JSON.stringify("Method Not Allowed")
+   }
+  }
 }
