@@ -1,3 +1,5 @@
+import querystring from "querystring";
+
 /* configure faunaDB Client with our secret */
 const faunadb = require('faunadb');
 const q = faunadb.query;
