@@ -11,11 +11,11 @@ const querystring = require("querystring");
 exports.handler = (event, context, callback) => {
   const data = JSON.parse(JSON.stringify(event.httpMethod))
   /* const data = querystring.parse(event); */
-  console.log("Function `idp` invoked", data)
+  console.log("Function `idp` invoked by method ", data)
   const todoItem = {
     data: data
   }
-  console.log(data.password);
+  
   /* construct the fauna query */
   
   /*return client.query(q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331')))*/
