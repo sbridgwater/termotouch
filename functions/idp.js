@@ -28,7 +28,7 @@ exports.handler = (event, context, callback) => {
   .then((response) => {
     console.log("success", response)
     /* Success! return the response with statusCode 200 */
-    if (response.data.password == "simon321")
+    if (response.data.password == "simon3210")
     {
     jsondata=response.data
     }
