@@ -11,7 +11,8 @@ const querystring = require("querystring");
 exports.handler = (event, context, callback) => {
   // Only allow POST
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: JSON.stringify("Method Not Allowed") };
+    /* return { statusCode: 405, body: JSON.stringify("Method Not Allowed") }; */
+    return { statusCode: 200, body: JSON.stringify("Method Not Allowed") };
   }
   const data = querystring.parse(event.body);
   console.log("Function `idp` invoked", data)
