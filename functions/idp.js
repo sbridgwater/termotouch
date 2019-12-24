@@ -20,7 +20,9 @@ exports.handler = (event, context, callback) => {
   /*return client.query(q.Get(q.Ref(q.Match(q.Index('idp/all_users'), 'simon.bridgwater@yahoo.it'))))*/
   
   client.query(
-  q.Match(q.Index('all_users'), 'simon.bridgwater@yahoo.it')
+    q.Get(
+       q.Match(q.Index('all_users'), 'simon.bridgwater@yahoo.it')
+      )
   )
   .then((response) => {
     console.log("success", response)
