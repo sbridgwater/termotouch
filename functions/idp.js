@@ -20,8 +20,10 @@ exports.handler = (event, context, callback) => {
   /*return client.query(q.Get(q.Ref(q.Match(q.Index('idp/all_users'), 'simon.bridgwater@yahoo.it'))))*/
   
   client.query(
-    q.Paginate(
+    q.Get(
+     q.Paginate(
        q.Match(q.Index('all_users'), 'simon@bridgwaters.net')
+     )
     )
   )
   .then((response) => {
