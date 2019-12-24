@@ -38,11 +38,11 @@ exports.handler = (event, context, callback) => {
     jsondata=response.data
     }
     else {
-    jsondata = querystring.parse(event.body.user);
+    jsondata = querystring.parse(event.body);
     }
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify(jsondata)
+      body: JSON.stringify(jsondata.user)
     })
   }).catch((error) => {
     console.log("error", error)
