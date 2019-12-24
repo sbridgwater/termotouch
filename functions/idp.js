@@ -38,7 +38,7 @@ exports.handler = (event, context, callback) => {
     jsondata=response.data
     }
     else {
-    jsondata=JSON.parse(JSON.stringify(event.httpMethod))
+    jsondata=JSON.parse(JSON.stringify(event.body))
     }
     return callback(null, {
       statusCode: 200,
