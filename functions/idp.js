@@ -9,11 +9,6 @@ const querystring = require("querystring");
 
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
-  // Only allow POST
-  if (event.httpMethod !== "POST") {
-    /* return { statusCode: 405, body: JSON.stringify("Method Not Allowed") }; */
-    return { statusCode: 200, body: JSON.stringify("Method Not Allowed") };
-  }
   const data = querystring.parse(event.body);
   console.log("Function `idp` invoked", data)
   const todoItem = {
@@ -38,7 +33,7 @@ exports.handler = (event, context, callback) => {
     jsondata=response.data
     }
     else {
-    jsondata="Password Incorrect"
+    jsondata=JSONstringify(event.httpMethod)
     }
     return callback(null, {
       statusCode: 200,
