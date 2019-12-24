@@ -1,11 +1,11 @@
-import querystring from "querystring";
-
 /* configure faunaDB Client with our secret */
 const faunadb = require('faunadb');
 const q = faunadb.query;
 const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
 })
+
+const querystring = require("querystring");
 
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
