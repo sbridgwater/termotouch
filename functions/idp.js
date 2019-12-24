@@ -14,6 +14,7 @@ exports.handler = (event, context, callback) => {
   const todoItem = {
     data: data
   }
+  console.log(data.password);
   /* construct the fauna query */
   
   /*return client.query(q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331')))*/
