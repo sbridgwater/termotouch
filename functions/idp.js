@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) => {
   
   httpmethod=JSON.parse(JSON.stringify(event.httpMethod));
   
-  if (httpmethod == "GET") {
+  if (httpmethod == "POST") {
   
   client.query(
      q.Get(
