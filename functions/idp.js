@@ -11,7 +11,8 @@ const querystring = require("querystring");
 exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
   /* const data = JSON.parse(event.body); */
-  const data = "without error";
+  /* const data = "without error"; */
+  const data = querystring.parse(event.body);
   console.log("Function `idp` invoked", data)
   const todoItem = {
     data: data
