@@ -21,9 +21,7 @@ exports.handler = (event, context, callback) => {
   
   client.query(
     q.Paginate(
-      q.Get(
        q.Match(q.Index('all_users'), 'simon@bridgwaters.net')
-      )
     )
   )
   .then((response) => {
