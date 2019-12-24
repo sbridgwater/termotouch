@@ -6,7 +6,7 @@
   },
   "scripts": {
     "prebuild" : "cd functions && npm i",
-    "build": "faunadb build"
+    "build": "faunadb btoa-lite build"
   },
   "devDependencies": {
     "faunadb": "^2.10.2"
