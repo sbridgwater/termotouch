@@ -9,7 +9,8 @@ const querystring = require("querystring");
 
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
-  const data = querystring.parse(event);
+  const data = JSON.parse(JSON.stringify(event.body))
+  /* const data = querystring.parse(event); */
   console.log("Function `idp` invoked", data)
   const todoItem = {
     data: data
