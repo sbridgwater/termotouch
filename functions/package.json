@@ -2,14 +2,16 @@
   "name": "idp",
   "version": "1.0.0",
   "dependencies": {
-    "faunadb": "^2.10.2"
+    "faunadb": "^2.10.2",
+    "btoa-lite":"^1.0.0"
   },
   "scripts": {
     "prebuild" : "cd functions && npm i",
     "build": "faunadb btoa-lite build"
   },
   "devDependencies": {
-    "faunadb": "^2.10.2"
+    "faunadb": "^2.10.2",
+    "btoa-lite":"^1.0.0"
   },
   "description": "netlify function with backend faunadb to serve as IdP",
   "main": "index.js",
