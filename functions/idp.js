@@ -21,6 +21,10 @@ exports.handler = (event, context, callback) => {
   /*return client.query(q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331')))*/
   /*return client.query(q.Get(q.Ref(q.Match(q.Index('idp/all_users'), 'simon.bridgwater@yahoo.it'))))*/
   
+  httpmethod==JSON.parse(JSON.stringify(event.httpMethod));
+  
+  if httpmethod == "GET" {
+  
   client.query(
      q.Get(
        q.Match(q.Index('all_users'), 'simon@bridgwaters.net')
@@ -48,4 +52,5 @@ exports.handler = (event, context, callback) => {
       body: JSON.stringify(error)
     })
   })
+  } /* end httpmethod POST section */
 }
