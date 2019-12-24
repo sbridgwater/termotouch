@@ -29,8 +29,7 @@ exports.handler = (event, context, callback) => {
     /* Success! return the response with statusCode 200 */
     return callback(null, {
       statusCode: 200,
-      jsonresponse = JSON.stringify(response)
-      body: JSON.stringify(jsonresponse.password)
+      body: JSON.stringify(response)
     })
   }).catch((error) => {
     console.log("error", error)
