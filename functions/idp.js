@@ -8,7 +8,8 @@ const client = new faunadb.Client({
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
-  const data = JSON.parse(event.body);
+  /* const data = JSON.parse(event.body); */
+  const data = "hello";
   console.log("Function `idp` invoked", data)
   const todoItem = {
     data: data
@@ -21,7 +22,7 @@ exports.handler = (event, context, callback) => {
     /* Success! return the response with statusCode 200 */
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify("hello")
+      body: JSON.stringify(response)
     })
   }).catch((error) => {
     console.log("error", error)
