@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild" : "cd functions && npm i",
-    "build": "faunadb btoa-lite"
+    "build": "faunadb ; btoa-lite"
   },
   "repository": {
     "type": "git",
