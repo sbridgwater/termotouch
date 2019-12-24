@@ -18,12 +18,10 @@ exports.handler = (event, context, callback) => {
   
   /*return client.query(q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331')))*/
   /*return client.query(q.Get(q.Ref(q.Match(q.Index('idp/all_users'), 'simon.bridgwater@yahoo.it'))))*/
+  
   client.query(
-  q.Match(
-    q.Index('all_users'),
-    ['simon.bridgwater@yahoo.it'],
+  q.Match(q.Index('all_users'), 'simon.bridgwater@yahoo.it')
   )
-)
   .then((response) => {
     console.log("success", response)
     /* Success! return the response with statusCode 200 */
