@@ -1,6 +1,6 @@
 /* configure faunaDB Client with our secret */
 const faunadb = require('faunadb');
-const q = faunadb.query
+const q = faunadb.query;
 const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
 })
@@ -8,7 +8,7 @@ const client = new faunadb.Client({
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
-  const data = JSON.parse(event.body)
+  const data = JSON.parse(event.body);
   console.log("Function `idp` invoked", data)
   const todoItem = {
     data: data
