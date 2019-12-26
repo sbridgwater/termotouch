@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) => {
   if (httpmethod == "POST") {
   
   postdata = JSON.stringify(querystring.parse(event.body));
-  console.log(postdata.password);
+  console.log(postdata);
     
   client.query(
      q.Get(
