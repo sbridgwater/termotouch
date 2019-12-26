@@ -72,9 +72,11 @@ exports.handler = (event, context, callback) => {
     
     
     text_pwd_enc = response.data.password;
-    console.log(text_pwd_dec);
+    console.log(text_pwd_enc);
+    /*
     text_pwd_dec = decrypt(text_pwd_enc);
     console.log(text_pwd_dec);
+    */
     
     if (response.data.password == postdata.password)
     {
