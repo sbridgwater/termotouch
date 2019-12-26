@@ -43,9 +43,9 @@ exports.handler = (event, context, callback) => {
     /* Success! return the response with statusCode 200 */
     
     /* encrypt */
-    console.log("Ciphering:", postdata.password, key, algorithm);
+    console.log("Ciphering:", postdata.password, ENCRYPT_KEY, algorithm);
     iv = crypto.randomBytes(IV_LENGTH);
-    cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPTION_KEY), iv);
+    cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
