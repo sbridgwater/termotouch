@@ -49,10 +49,18 @@ exports.handler = (event, context, callback) => {
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
-    console.log("Cipher Result:", outputEncoding, ciphered);
+    ciphered_str = iv.toString('hex') + ':' + cyphered.toString('hex');
+    
+    console.log("Cipher Result:", outputEncoding, ciphered_str);
+    
+    textParts = ciphered_str.split(':');
+    iv = Buffer.from(textParts.shift(), 'hex');
+    encryptedText = Buffer.from(textParts.join(':'), 'hex');
     
     decipher = crypto.createDecipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
-    deciphered = decipher.update(ciphered, outputEncoding, inputEncoding);
+    deciphered = decipher.update(encryptedText, outputEncoding, inputEncoding);
+    /* decrypted = Buffer.concat([decrypted, decipher.final()]);
+       deciphered = decrypted.toString(); */
     deciphered += decipher.final(inputEncoding);
     
     console.log("Decipher Result:", inputEncoding, deciphered);
