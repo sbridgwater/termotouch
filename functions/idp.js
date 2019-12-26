@@ -39,7 +39,7 @@ exports.handler = (event, context, callback) => {
     }
     else {
     jsondata = querystring.parse(event.body);
-    jsondata = JSON.parse(jsondata)
+    /* jsondata = JSON.parse(jsondata) */
     }
     return callback(null, {
       statusCode: 200,
