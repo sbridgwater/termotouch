@@ -5,6 +5,9 @@ const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
 })
 
+/* define encrypt/decrypt functions */
+var crypto = require('crypto');
+
 const querystring = require("querystring");
 
 /* export our lambda function as named "handler" export */
