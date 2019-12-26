@@ -49,12 +49,19 @@ exports.handler = (event, context, callback) => {
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
+    console.log("Cipher Result:", outputEncoding, ciphered);
+    
+    decipher = crypto.createDecipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
+    deciphered = decipher.update(ciphered, outputEncoding, inputEncoding);
+    deciphered += decipher.final(inputEncoding);
+    
+    console.log("Decipher Result:", inputEncoding, deciphered);
     
     if (response.data.password == postdata.password)
     {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
-      console.log("Cipher Result:", outputEncoding, ciphered);
+      
       /* console.log(response.data.key); */
     }
     else {
