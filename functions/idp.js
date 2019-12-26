@@ -23,6 +23,7 @@ exports.handler = (event, context, callback) => {
   if (httpmethod == "POST") {
   
   postdata = JSON.stringify(querystring.parse(event.body));
+  console.log(postdata.password);
     
   client.query(
      q.Get(
@@ -30,13 +31,14 @@ exports.handler = (event, context, callback) => {
      )
   )
   .then((response) => {
-    console.log("success", response)
+    console.log("success", response);
+    console.log(response.data.password);
+    console.log(postdata.password);
     /* Success! return the response with statusCode 200 */
     if (response.data.password == postdata.password)
     {
       console.log(response.data.password);
       jsondata = JSON.stringify(querystring.parse(event.body));
-      console.log(jsondata.password);
       jsondata="Passwords Match";
     }
     else {
