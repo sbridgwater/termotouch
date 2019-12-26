@@ -6,11 +6,11 @@ const client = new faunadb.Client({
 })
 
 /* define encrypt/decrypt functions */
-var crypto = require('crypto');
-var algorithm = 'aes256';
-var inputEncoding = 'utf8';
-var outputEncoding = 'hex';
-var key =  process.env.ENCRYPT_KEY;
+crypto = require('crypto');
+algorithm = 'aes256';
+inputEncoding = 'utf8';
+outputEncoding = 'hex';
+key =  process.env.ENCRYPT_KEY;
 
 const querystring = require("querystring");
 
@@ -43,16 +43,17 @@ exports.handler = (event, context, callback) => {
     
     /* encrypt */
     console.log("Ciphering:", postdata.password, key, algorithm);
-    var cipher = crypto.createCipher(algorithm, key);
-    var ciphered = cipher.update(text, inputEncoding, outputEncoding);
+    cipher = crypto.createCipher(algorithm, key);
+    ciphered = cipher.update(text, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
-    console.log("Result:", outputEncoding, ciphered);
+    
     
     if (response.data.password == postdata.password)
     {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
-      console.log(response.data.key);
+      console.log("Cipher Result:", outputEncoding, ciphered);
+      /* console.log(response.data.key); */
     }
     else {
       jsondata="Password NOT Matched";
