@@ -7,10 +7,11 @@ const client = new faunadb.Client({
 
 /* define encrypt/decrypt functions */
 crypto = require('crypto');
-algorithm = 'aes256';
+algorithm = 'aes256-cbc';
 inputEncoding = 'utf8';
 outputEncoding = 'hex';
-key =  process.env.ENCRYPT_KEY;
+const IV_LENGTH = 16; // For AES, this is always 16
+ENCRYPT_KEY =  process.env.ENCRYPT_KEY; // Must be 32 characters
 
 const querystring = require("querystring");
 
@@ -43,8 +44,8 @@ exports.handler = (event, context, callback) => {
     
     /* encrypt */
     console.log("Ciphering:", postdata.password, key, algorithm);
-    iv = Buffer.from(Array.prototype.map.call(iv, () => {return Math.floor(Math.random() * 256)})),
-    cipher = crypto.createCipheriv(algorithm, key, iv);
+    iv = crypto.randomBytes(IV_LENGTH);
+    cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPTION_KEY), iv);
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
