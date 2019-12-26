@@ -67,18 +67,22 @@ exports.handler = (event, context, callback) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     
-    /* Encrypt */
-    text_jwt = "tasmanianDevil";
+    /* Encrypt
+    text_jwt = "put_jwtkey_here";
     text_pwd_enc = encrypt(text_jwt);
     console.log("Enc_Jwt");
     console.log(text_pwd_enc);
-    
+    */ 
     
     text_pwd_enc = response.data.password;
+    text_jwt_enc = response.data.key;
     console.log(text_pwd_enc);
+    console.log(text_jwt_enc);
     
     text_pwd_dec = decrypt(text_pwd_enc);
+    text_jwt_dec = decrypt(text_jwt_enc);
     console.log(text_pwd_dec);
+    console.log(text_jwt_dec);
     
     
     if (text_pwd_dec == postdata.password)
