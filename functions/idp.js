@@ -42,17 +42,17 @@ exports.handler = (event, context, callback) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     
-    /* encrypt */
+    /* encrypt
     console.log("Ciphering:", postdata.password, ENCRYPT_KEY, algorithm);
     iv = crypto.randomBytes(IV_LENGTH);
     cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
-    
     ciphered_str = iv.toString('hex') + ':' + ciphered.toString('hex');
-    
     console.log("Cipher Result:", outputEncoding, ciphered_str);
+    */
     
+    ciphered_str = response.data.password;
     textParts = ciphered_str.split(':');
     iv = Buffer.from(textParts.shift(), 'hex');
     encryptedText = Buffer.from(textParts.join(':'), 'hex');
