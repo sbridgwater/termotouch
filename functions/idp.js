@@ -33,7 +33,7 @@ exports.handler = (event, context, callback) => {
   .then((response) => {
     console.log("success", response);
     console.log(response.data.password);
-    console.log(postdata['password']);
+    console.log(postdata[password]);
     /* Success! return the response with statusCode 200 */
     if (response.data.password == postdata.password)
     {
