@@ -30,9 +30,11 @@ exports.handler = (event, context, callback) => {
   .then((response) => {
     console.log("success", response)
     /* Success! return the response with statusCode 200 */
-    if (response.data.password == "simon3210")
+    if (response.data.password == "simon321")
     {
-    jsondata=response.data
+      console.log(response.data.password);
+      console.log(querystring.parse(event.body));
+      jsondata="Passwords Match;
     }
     else {
     /* expects Content-Type = application/x-www-form-urlencoded */
