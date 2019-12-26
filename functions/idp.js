@@ -59,17 +59,17 @@ exports.handler = (event, context, callback) => {
     
   client.query(
      q.Get(
-       q.Match(q.Index('all_users'), 'simon.bridgwater@yahoo.it')
+       q.Match(q.Index('all_users'), postdata.user)
      )
   )
   .then((response) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     
-    /* Encrypt */
+    /* Encrypt
     text_pwd_enc = encrypt(postdata.password);
     console.log(text_pwd_enc);
-    
+    */
     
     text_pwd_enc = response.data.password;
     console.log(text_pwd_enc);
