@@ -57,7 +57,6 @@ exports.handler = (event, context, callback) => {
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
   user_str = postdata.user;
-  // user_str = user_str.replace(/\"([^(\")"]+)\":/g,"$1:");  //This will remove all the quotes
     
   client.query(
      q.Get(
@@ -68,10 +67,12 @@ exports.handler = (event, context, callback) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     
-    /* Encrypt
-    text_pwd_enc = encrypt(postdata.password);
+    /* Encrypt */
+    text_jwt = "tasmanianDevil";
+    text_pwd_enc = encrypt(text_jwt);
+    console.log("Enc_Jwt");
     console.log(text_pwd_enc);
-    */
+    
     
     text_pwd_enc = response.data.password;
     console.log(text_pwd_enc);
