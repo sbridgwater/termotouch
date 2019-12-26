@@ -59,7 +59,7 @@ exports.handler = (event, context, callback) => {
     
   client.query(
      q.Get(
-       q.Match(q.Index('all_users'), postdata.user)
+       q.Match(q.Index('all_users'), JSON.stringify(postdata.user))
      )
   )
   .then((response) => {
