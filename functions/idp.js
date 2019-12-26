@@ -18,9 +18,6 @@ exports.handler = (event, context, callback) => {
   
   /* construct the fauna query */
   
-  /*return client.query(q.Get(q.Ref(q.Collection('termotouch'), '252467483202552331')))*/
-  /*return client.query(q.Get(q.Ref(q.Match(q.Index('idp/all_users'), 'simon.bridgwater@yahoo.it'))))*/
-  
   httpmethod=JSON.parse(JSON.stringify(event.httpMethod));
   
   if (httpmethod == "POST") {
@@ -38,8 +35,8 @@ exports.handler = (event, context, callback) => {
     jsondata=response.data
     }
     else {
+    /* expects Content-Type = application/x-www-form-urlencoded */
     jsondata = querystring.parse(event.body);
-    /* jsondata = JSON.parse(jsondata) */
     }
     return callback(null, {
       statusCode: 200,
