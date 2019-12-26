@@ -5,6 +5,9 @@ const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
 })
 
+/* jsonwebtoken */
+jwt = require('jsonwebtoken');
+
 /* define encrypt/decrypt functions */
 crypto = require('crypto');
 algorithm = 'aes-256-cbc';
@@ -90,7 +93,11 @@ exports.handler = (event, context, callback) => {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
       
-      /* console.log(response.data.key); */
+      /* Generate jwt with expiration in 1 hour*/
+      token = jwt.sign({
+       exp: Math.floor(Date.now() / 1000) + (60 * 60),
+       data: postdata.uid
+      }, text_jwt_dec);
     }
     else {
       jsondata="Password NOT Matched";
