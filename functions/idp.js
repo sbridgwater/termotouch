@@ -98,7 +98,7 @@ exports.handler = (event, context, callback) => {
        exp: Math.floor(Date.now() / 1000) + (60 * 60),
        data: postdata.uid
       }, text_jwt_dec);
-      console.log('JWT->,token);
+      console.log('JWT->',token);
     }
     else {
       jsondata="Password NOT Matched";
