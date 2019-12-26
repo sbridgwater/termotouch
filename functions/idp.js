@@ -66,10 +66,12 @@ exports.handler = (event, context, callback) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     
-    /* Encrypt  */
+    /* Encrypt
     text_pwd_enc = encrypt(postdata.password);
     console.log(text_pwd_enc);
+    */
     
+    text_pwd_enc = response.data.password;
     text_pwd_dec = decrypt(text_pwd_enc);
     console.log(text_pwd_dec);
     
