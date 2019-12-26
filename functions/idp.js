@@ -42,11 +42,11 @@ exports.handler = (event, context, callback) => {
     /* Success! return the response with statusCode 200 */
     
     /* encrypt */
-    console.log('Ciphering "%s" ', postdata.password, key, algorithm);
+    console.log("Ciphering:", postdata.password, key, algorithm);
     var cipher = crypto.createCipher(algorithm, key);
     var ciphered = cipher.update(text, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
-    console.log('Result in %s is "%s"', outputEncoding, ciphered);
+    console.log("Result:", outputEncoding, ciphered);
     
     if (response.data.password == postdata.password)
     {
