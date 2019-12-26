@@ -66,34 +66,15 @@ exports.handler = (event, context, callback) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     
-    /* encrypt
-    console.log("Ciphering:", postdata.password, ENCRYPT_KEY, algorithm);
-    iv = crypto.randomBytes(IV_LENGTH);
-    cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
-    ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
-    ciphered += cipher.final(outputEncoding);
-    ciphered_str = iv.toString('hex') + ':' + ciphered.toString('hex');
-    console.log("Cipher Result:", outputEncoding, ciphered_str);
+    /* Encrypt Password
+    text_pwd_enc = encrypt(postdata.password);
+    console.log(text_pwd_enc);
     */
     
-    text_penc = encrypt(postdata.password);
-    console.log(text_penc);
+    text_pwd_dec = decrypt(response.data.password);
+    console.log(text_pwd_dec);
     
-    /*
-    ciphered_str = response.data.password;
-    textParts = ciphered_str.split(':');
-    iv = Buffer.from(textParts.shift(), 'hex');
-    encryptedText = Buffer.from(textParts.join(':'), 'hex');
-    decipher = crypto.createDecipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
-    deciphered = decipher.update(encryptedText, outputEncoding, inputEncoding);
-    deciphered += decipher.final(inputEncoding);
-    console.log("Decipher Result:", inputEncoding, deciphered);
-    */
-    
-    text_pdec = decrypt(text_penc);
-    console.log(text_pdec);
-    
-    if (response.data.password == postdata.password)
+    if (text_pwd_dec == postdata.password)
     {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
