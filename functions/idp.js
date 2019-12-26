@@ -60,7 +60,6 @@ exports.handler = (event, context, callback) => {
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
   user_str = postdata.user;
-  uuid_str = postdata.uid;
     
   client.query(
      q.Get(
@@ -100,8 +99,8 @@ exports.handler = (event, context, callback) => {
        data: postdata.uid
       }, text_jwt_dec);
       console.log('JWT->',token);
-      console.log('UUID->',postdata.uid);
-      jsondata = { message: "ok", token: token, id: postdata.uid };
+      console.log('UUID->',response.data.uid);
+      jsondata = { message: "ok", token: token, id: response.data.uid };
     }
     else {
       jsondata="Password NOT Matched";
