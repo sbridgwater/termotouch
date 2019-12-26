@@ -70,10 +70,10 @@ exports.handler = (event, context, callback) => {
     text_pwd_enc = encrypt(postdata.password);
     console.log(text_pwd_enc);
     
-    text_pwd_dec = decrypt(response.data.password);
+    text_pwd_dec = decrypt(text_pwd_enc);
     console.log(text_pwd_dec);
     
-    if (text_pwd_dec == postdata.password)
+    if (response.data.password == postdata.password)
     {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
