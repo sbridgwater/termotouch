@@ -21,7 +21,8 @@ exports.handler = (event, context, callback) => {
   httpmethod=JSON.parse(JSON.stringify(event.httpMethod));
   
   if (httpmethod == "POST") {
-  
+    
+  /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
   console.log(postdata);
     
@@ -37,13 +38,12 @@ exports.handler = (event, context, callback) => {
     /* Success! return the response with statusCode 200 */
     if (response.data.password == postdata.password)
     {
-      console.log(response.data.password);
       jsondata = JSON.stringify(querystring.parse(event.body));
-      jsondata="Passwords Match";
+      jsondata="Password Matched";
     }
     else {
-    /* expects Content-Type = application/x-www-form-urlencoded */
-    jsondata = querystring.parse(event.body);
+    jsondata = JSON.stringify(querystring.parse(event.body));
+    jsondata="Passwords NOT Matched";
     }
     return callback(null, {
       statusCode: 200,
