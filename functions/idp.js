@@ -61,7 +61,7 @@ exports.handler = (event, context, callback) => {
     
   client.query(
      q.Get(
-       q.Match(q.Index('all_users'), user_str))
+       q.Match(q.Index('all_users'), user_str)
      )
   )
   .then((response) => {
