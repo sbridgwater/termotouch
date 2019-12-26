@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
   
   if (httpmethod == "POST") {
   
-  postdata = JSON.parse(querystring.parse(event.body));
+  postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
   console.log(postdata);
     
   client.query(
