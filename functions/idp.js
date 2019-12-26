@@ -14,9 +14,9 @@ const IV_LENGTH = 16; // For AES, this is always 16
 ENCRYPT_KEY =  process.env.ENCRYPT_KEY; // Must be 32 characters
 
 function encrypt(text) {
- let iv = crypto.randomBytes(IV_LENGTH);
- let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
- let encrypted = cipher.update(text);
+ iv = crypto.randomBytes(IV_LENGTH);
+ cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+ encrypted = cipher.update(text);
 
  encrypted = Buffer.concat([encrypted, cipher.final()]);
 
@@ -24,11 +24,11 @@ function encrypt(text) {
 }
 
 function decrypt(text) {
- let textParts = text.split(':');
- let iv = Buffer.from(textParts.shift(), 'hex');
- let encryptedText = Buffer.from(textParts.join(':'), 'hex');
- let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
- let decrypted = decipher.update(encryptedText);
+ textParts = text.split(':');
+ iv = Buffer.from(textParts.shift(), 'hex');
+ encryptedText = Buffer.from(textParts.join(':'), 'hex');
+ decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+ decrypted = decipher.update(encryptedText);
 
  decrypted = Buffer.concat([decrypted, decipher.final()]);
 
