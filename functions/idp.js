@@ -9,7 +9,7 @@ const client = new faunadb.Client({
 crypto = require('crypto');
 algorithm = 'aes-256-cbc';
 inputEncoding = 'utf8';
-outputEncoding = 'hex';
+outputEncoding = 'utf8';
 const IV_LENGTH = 16; // For AES, this is always 16
 ENCRYPT_KEY =  process.env.ENCRYPT_KEY; // Must be 32 characters
 
