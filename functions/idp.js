@@ -13,6 +13,30 @@ outputEncoding = 'hex';
 const IV_LENGTH = 16; // For AES, this is always 16
 ENCRYPT_KEY =  process.env.ENCRYPT_KEY; // Must be 32 characters
 
+function encrypt(text) {
+ let iv = crypto.randomBytes(IV_LENGTH);
+ let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+ let encrypted = cipher.update(text);
+
+ encrypted = Buffer.concat([encrypted, cipher.final()]);
+
+ return iv.toString('hex') + ':' + encrypted.toString('hex');
+}
+
+function decrypt(text) {
+ let textParts = text.split(':');
+ let iv = Buffer.from(textParts.shift(), 'hex');
+ let encryptedText = Buffer.from(textParts.join(':'), 'hex');
+ let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+ let decrypted = decipher.update(encryptedText);
+
+ decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+ return decrypted.toString();
+}
+
+/* end encrypt/decrypt functions */
+
 const querystring = require("querystring");
 
 /* export our lambda function as named "handler" export */
@@ -52,18 +76,22 @@ exports.handler = (event, context, callback) => {
     console.log("Cipher Result:", outputEncoding, ciphered_str);
     */
     
+    text_penc = encrypt(postdata.password);
+    console.log(text_penc);
+    
+    /*
     ciphered_str = response.data.password;
     textParts = ciphered_str.split(':');
     iv = Buffer.from(textParts.shift(), 'hex');
     encryptedText = Buffer.from(textParts.join(':'), 'hex');
-    
     decipher = crypto.createDecipheriv(algorithm, Buffer.from(ENCRYPT_KEY), iv);
     deciphered = decipher.update(encryptedText, outputEncoding, inputEncoding);
-    /* decrypted = Buffer.concat([decrypted, decipher.final()]);
-       deciphered = decrypted.toString(); */
     deciphered += decipher.final(inputEncoding);
-    
     console.log("Decipher Result:", inputEncoding, deciphered);
+    */
+    
+    text_pdec = decrypt(text_penc);
+    console.log(text_pdec);
     
     if (response.data.password == postdata.password)
     {
