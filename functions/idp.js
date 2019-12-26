@@ -76,13 +76,13 @@ exports.handler = (event, context, callback) => {
     
     text_pwd_enc = response.data.password;
     text_jwt_enc = response.data.key;
-    console.log(text_pwd_enc);
-    console.log(text_jwt_enc);
+    console.log('Encrypted Password->',text_pwd_enc);
+    console.log('Encrypted JWT key->',text_jwt_enc);
     
     text_pwd_dec = decrypt(text_pwd_enc);
     text_jwt_dec = decrypt(text_jwt_enc);
-    console.log(text_pwd_dec);
-    console.log(text_jwt_dec);
+    // console.log(text_pwd_dec);
+    // console.log(text_jwt_dec);
     
     
     if (text_pwd_dec == postdata.password)
