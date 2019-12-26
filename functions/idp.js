@@ -71,8 +71,8 @@ exports.handler = (event, context, callback) => {
     console.log(text_pwd_enc);
     */
     
-    text_pwd_enc = response.data.password;
-    text_pwd_dec = decrypt(text_pwd_enc);
+    response_data = JSON.parse(response.data);
+    text_pwd_dec = decrypt(response_data.password);
     console.log(text_pwd_dec);
     
     if (response.data.password == postdata.password)
