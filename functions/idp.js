@@ -34,7 +34,7 @@ exports.handler = (event, context, callback) => {
     {
       console.log(response.data.password);
       console.log(querystring.parse(event.body));
-      jsondata="Passwords Match;
+      jsondata="Passwords Match";
     }
     else {
     /* expects Content-Type = application/x-www-form-urlencoded */
