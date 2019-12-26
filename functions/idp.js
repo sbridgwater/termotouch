@@ -59,7 +59,7 @@ exports.handler = (event, context, callback) => {
     
   client.query(
      q.Get(
-       q.Match(q.Index('all_users'), 'simon.bridgwaters@yahoo.it')
+       q.Match(q.Index('all_users'), 'simon.bridgwater@yahoo.it')
      )
   )
   .then((response) => {
