@@ -49,7 +49,7 @@ exports.handler = (event, context, callback) => {
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
-    ciphered_str = iv.toString('hex') + ':' + cyphered.toString('hex');
+    ciphered_str = iv.toString('hex') + ':' + ciphered.toString('hex');
     
     console.log("Cipher Result:", outputEncoding, ciphered_str);
     
