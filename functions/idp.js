@@ -7,6 +7,10 @@ const client = new faunadb.Client({
 
 /* define encrypt/decrypt functions */
 var crypto = require('crypto');
+var algorithm = 'aes256';
+var inputEncoding = 'utf8';
+var outputEncoding = 'hex';
+var key =  process.env.ENCRYPT_KEY;
 
 const querystring = require("querystring");
 
@@ -36,6 +40,14 @@ exports.handler = (event, context, callback) => {
   .then((response) => {
     /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
+    
+    /* encrypt */
+    console.log('Ciphering "%s" ', postdata.password, key, algorithm);
+    var cipher = crypto.createCipher(algorithm, key);
+    var ciphered = cipher.update(text, inputEncoding, outputEncoding);
+    ciphered += cipher.final(outputEncoding);
+    console.log('Result in %s is "%s"', outputEncoding, ciphered);
+    
     if (response.data.password == postdata.password)
     {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
