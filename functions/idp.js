@@ -56,10 +56,12 @@ exports.handler = (event, context, callback) => {
     
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
+  user_str = postdata.user;
+  user_str = user_str.replace(/\"([^(\")"]+)\":/g,"$1:");  //This will remove all the quotes
     
   client.query(
      q.Get(
-       q.Match(q.Index('all_users'), JSON.stringify(postdata.user))
+       q.Match(q.Index('all_users'), user_str))
      )
   )
   .then((response) => {
