@@ -44,7 +44,7 @@ exports.handler = (event, context, callback) => {
     /* encrypt */
     console.log("Ciphering:", postdata.password, key, algorithm);
     cipher = crypto.createCipher(algorithm, key);
-    ciphered = cipher.update(text, inputEncoding, outputEncoding);
+    ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
     
