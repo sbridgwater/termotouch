@@ -43,7 +43,8 @@ exports.handler = (event, context, callback) => {
     
     /* encrypt */
     console.log("Ciphering:", postdata.password, key, algorithm);
-    cipher = crypto.createCipheriv(algorithm, key);
+    iv = Buffer.from(Array.prototype.map.call(iv, () => {return Math.floor(Math.random() * 256)})),
+    cipher = crypto.createCipheriv(algorithm, key, iv);
     ciphered = cipher.update(postdata.password, inputEncoding, outputEncoding);
     ciphered += cipher.final(outputEncoding);
     
