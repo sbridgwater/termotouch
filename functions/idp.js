@@ -39,6 +39,9 @@ exports.handler = (event, context, callback) => {
     }
     else {
     jsondata = querystring.parse(event.body);
+    /* decode from base64 */
+    decodejsondata = Buffer.from(jsondata, 'base64').toString('utf8')
+    jsondata = JSON.parse(decodejsondata)
     }
     return callback(null, {
       statusCode: 200,
