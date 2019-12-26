@@ -24,7 +24,6 @@ exports.handler = (event, context, callback) => {
     
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
-  console.log(postdata);
     
   client.query(
      q.Get(
@@ -32,18 +31,16 @@ exports.handler = (event, context, callback) => {
      )
   )
   .then((response) => {
-    console.log("success", response);
-    console.log(response.data.password);
-    console.log(postdata.password);
+    /* console.log("success", response); */
     /* Success! return the response with statusCode 200 */
     if (response.data.password == postdata.password)
     {
-      jsondata = JSON.stringify(querystring.parse(event.body));
+      /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
+      console.log(response.data.key);
     }
     else {
-    jsondata = JSON.stringify(querystring.parse(event.body));
-    jsondata="Passwords NOT Matched";
+      jsondata="Password NOT Matched";
     }
     return callback(null, {
       statusCode: 200,
