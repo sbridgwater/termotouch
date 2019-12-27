@@ -5,7 +5,7 @@ const client = new faunadb.Client({
   secret: process.env.FAUNADB_IDP
 })
 
-/* jsonwebtoken */
+/* jsonwebtoken module */
 jwt = require('jsonwebtoken');
 
 /* define encrypt/decrypt functions */
