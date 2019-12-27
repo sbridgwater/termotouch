@@ -60,6 +60,7 @@ exports.handler = (event, context, callback) => {
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
   user_str = postdata.user;
+  console.log(postdata);
     
   client.query(
      q.Get(
