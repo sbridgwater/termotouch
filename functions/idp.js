@@ -101,7 +101,7 @@ exports.handler = (event, context, callback) => {
       }, text_jwt_dec);
       console.log('JWT->',token);
       console.log('UUID->',response.data.uid);
-      jsondata = { message: "ok", token: token, id: response.data.uid, host: response.data.host };
+      jsondata = { message: "ok", name: response.data.user, token: token, id: response.data.uid, host: response.data.host };
     }
     else {
       jsondata="Password NOT Matched";
