@@ -2,7 +2,8 @@
 const faunadb = require('faunadb');
 const q = faunadb.query;
 const client = new faunadb.Client({
-  secret: process.env.FAUNADB_IDP
+  secret: process.env.FAUNADB_IDP,
+  timeout: 4
 })
 
 /* jsonwebtoken module */
