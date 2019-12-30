@@ -96,9 +96,9 @@ exports.handler = (event, context, callback) => {
       /* jsondata = JSON.stringify(querystring.parse(event.body)); */
       jsondata="Password Matched";
       
-      /* Generate jwt with expiration in 1 hour*/
+      /* Generate jwt with expiration in 4 hours */
       token = jwt.sign({
-       exp: Math.floor(Date.now() / 1000) + (60 * 60),
+       exp: Math.floor(Date.now() / 1000) + ( 4 * 60 * 60 ),
        data: postdata.uid
       }, text_jwt_dec);
       console.log('JWT->',token);
