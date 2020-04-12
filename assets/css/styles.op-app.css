@@ -22,7 +22,7 @@ body {
 a {
   color: #4fd2c2;
   outline: none;
-  font-size: x-large;
+  /* font-size: x-large; */
 }
 
 a:focus,
