@@ -57,7 +57,7 @@ exports.handler = (event, context, callback) => {
   
   httpmethod=JSON.parse(JSON.stringify(event.httpMethod));
   
-  if (httpmethod == "POST" || httpmethod == "OPTIONS" ) {
+  if (httpmethod == "POST" ) {
     
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
@@ -127,6 +127,38 @@ exports.handler = (event, context, callback) => {
     })
   })
   } /* end httpmethod POST section */
+  else if (httpmethod == "OPTIONS" ) {
+    
+    /* expects Content-Type = application/x-www-form-urlencoded */
+    postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
+    user_str = postdata.user;
+    console.log(postdata);
+      
+    client.query(
+       q.Get(
+         q.Match(q.Index('all_users'), user_str)
+       )
+    )
+    .then((response) => {
+      return callback(null, {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Methods': '*', 
+          'Access-Control-Allow-Credentials': true
+        },
+        body: JSON.stringify(jsondata)
+      })
+    }).catch((error) => {
+      console.log("error", error)
+      /* Error! return the error with statusCode 400 */
+      return callback(null, {
+        statusCode: 400,
+        body: JSON.stringify(error)
+      })
+    })
+    }
   else /* NOT Allowed */
   {
    return callback(null, {
