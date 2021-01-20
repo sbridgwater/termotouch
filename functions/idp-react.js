@@ -146,7 +146,8 @@ exports.handler = (event, context, callback) => {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Headers': '*',
           'Access-Control-Allow-Methods': '*', 
-          'Access-Control-Allow-Credentials': true
+          'Access-Control-Allow-Credentials': true,
+          'Content-Type': 'application\json'
         },
         body: JSON.stringify(jsondata)
       })
