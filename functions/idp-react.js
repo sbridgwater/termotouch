@@ -57,7 +57,7 @@ exports.handler = (event, context, callback) => {
   
   httpmethod=JSON.parse(JSON.stringify(event.httpMethod));
   
-  if (httpmethod == "POST" || httpmethod == "OPTIONS ) {
+  if (httpmethod == "POST" || httpmethod == "OPTIONS" ) {
     
   /* expects Content-Type = application/x-www-form-urlencoded */
   postdata = JSON.parse(JSON.stringify(querystring.parse(event.body)));
