@@ -4,10 +4,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
-[[redirects]]
-  from = "/idp-react"
-  to = "https://www.termotouch.it/.netlify/functions/idp-react"
-  status = 200
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"
